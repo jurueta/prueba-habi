@@ -1,0 +1,24 @@
+service: aws-prueba-habi
+
+frameworkVersion: '2.59.0'
+
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+custom:
+  serverless-offline:
+    host: 0.0.0.0
+
+provider:
+  name: aws
+  runtime: python3.8
+
+functions:
+  propertyApi:
+    name: propertyApi
+    handler: handler.property
+    events:
+      - http:
+          path: /property
+          method: get
